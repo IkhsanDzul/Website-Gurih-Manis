@@ -44,43 +44,45 @@
             font-weight: bold;
         }
 
-        .welcome-image {
-            position: relative;
-        }
-
-        .welcome-image img {
-            width: 300px;
-            height: auto;
-            position: absolute;
-            border-radius: 10px;
-            animation: float 4s ease-in-out infinite;
-        }
-
-        .welcome-image img:first-child {
-            bottom: -170px;
-            left: 50px;
-            transform: rotate(-5deg);
-            animation-delay: 0s;
-        }
-
-        .welcome-image img:last-child {
-            top: -200px;
-            right: 50px;
-            transform: rotate(5deg);
-            animation-delay: 1s;
-        }
-
-        @keyframes float {
-
-            0%,
-            100% {
-                transform: translateY(0) rotate(0deg);
-            }
-
-            50% {
-                transform: translateY(-15px) rotate(5deg);
-            }
-        }
+        .floating-image {
+      width: 150px;
+      height: auto;
+      position: absolute;
+      animation: float 4s ease-in-out infinite;
+    }
+    .floating-image:nth-child(1) {
+      top: 0;
+      left: 1%;
+      animation-delay: 0s;
+    }
+    .floating-image:nth-child(2) {
+      top: 65%;
+      left: 25%;
+      animation-delay: 1s;
+    }
+    .floating-image:nth-child(3) {
+      top: 25%;
+      left: 75%;
+      animation-delay: 2s;
+    }
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-20px);
+      }
+    }
+    .container-fluid {
+      background: linear-gradient(to bottom, #FEC97F, #FF4A4A);
+      height: 100vh;
+    }
+    .main-snack {
+      display: block;
+      margin: 0 auto;
+      width: 300px;
+      height: auto;
+    }
 
         @media (max-width: 768px) {
             .welcome-image img {
@@ -125,9 +127,13 @@
 
             </div>
             <!-- Image Section -->
-            <div class="col-lg-6 col-md-12 welcome-image">
-                <img src="assets/images/risol-bg.png" data-aos="fade-right" alt="Image 1">
-                <img src="assets/images/donut-bg.png" data-aos="fade-left" alt="Image 2">
+            <div class="col-md-6 position-relative">
+                <!-- Floating Images -->
+                <img src="assets/images/donat1.png" alt="Pink Donut" class="floating-image" data-aos="fade-right" data-aos-duration="1000">
+                <img src="assets/images/donat2.png" alt="Chocolate Donut" class="floating-image" data-aos="fade-up" data-aos-duration="1000">
+                <img src="assets/images/donat3.png" alt="Oreo Donut" class="floating-image" data-aos="fade-left" data-aos-duration="1000">
+                <!-- Main Snack Image -->
+                <img src="assets/images/risol-bg.png" alt="Main Snack" class="main-snack" data-aos="fade-in" data-aos-duration="1000"="">
             </div>
         </div>
     </div>
