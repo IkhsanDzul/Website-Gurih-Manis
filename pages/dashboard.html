@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donut Packages</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="/assets/images/favicon.ico">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="/assets/JS/script.js"></script>
+
+    <style>
+        body {
+            width: 100%;
+            height: auto;
+            background: rgb(255, 188, 80);
+            background: linear-gradient(180deg, rgb(255, 220, 164) 0%, rgba(241, 70, 71, 1) 54%);
+        }
+
+        .donut-image {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .risol-image {
+            max-width: 40vw;
+            height: auto;
+        }
+
+        .text{
+            width: 200px;
+            height: auto;
+        }
+
+        .package-container {
+            margin: 10px;
+            padding-top: 10px;
+            text-align: center;
+            margin-bottom: 20px;
+            cursor: pointer;
+            background-color: #7c2323;
+            border-radius: 25px;
+            color: #fff;
+        }
+
+        .package-container img {
+            cursor: pointer;
+        }
+
+        @media (max-width: 576px) {
+            .donut-image {
+                width: 200px;
+            }
+
+            .risol-image {
+                width: 50vw;
+            }
+
+            .text {
+                width: 90px;
+                height: auto;
+            }
+
+            h4 {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+      <div class="container py-5">
+        <div class="w-100 d-flex justify-content-center gap-4">
+          <img src="/assets/images/text-donut.png" class="text-center mb-4 text mx-auto" data-aos="fade-down" data-aos-delay="100">
+        </div>        <div class="d-flex justify-content-center gap-4">
+          <!-- Paket 1 -->
+          <div class="package-container text-center" data-aos="fade-right" data-aos-delay="200">
+            <img src="/assets/images/donutAndbomboloni.png" class="donut-image mb-3" alt="Donat">
+            <button class="btn btn-warning w-100 rounded rounded-pill" data-bs-toggle="modal" data-bs-target="#modalDonut"
+              onclick="openModal('Paket 1', 4)">Isi 4 - 10 Ribu</button>
+          </div>
+          <!-- Paket 2 -->
+          <div class="package-container text-center" data-aos="fade-left" data-aos-delay="300">
+            <img src="/assets/images/donutAndbomboloni.png" class="donut-image mb-3" alt="Donat">
+            <button class="btn btn-warning w-100 rounded rounded-pill" data-bs-toggle="modal" data-bs-target="#modalDonut"
+              onclick="openModal('Paket 2', 8)">Isi 8 - 20 Ribu</button>
+          </div>
+        </div>
+        <div class="w-100 d-flex justify-content-center gap-4">
+          <img src="/assets/images/text-risol.png" class="text-center mt-5 text mx-auto" data-aos="fade-down" data-aos-delay="100">
+        </div>
+        <div class="d-flex justify-content-center gap-4">
+          <!-- Paket Risol -->
+          <div class="package-container text-center d-flex flex-column align-items-center w-100" data-aos="fade-up">
+            <div class="d-flex justify-content-evenly align-items-center w-100">
+              <img src="/assets/images/risol2.jpg" class="mb-3 rounded rounded-4 risol-image" alt="Risol" data-aos="fade-in">
+              <img src="/assets/images/risol3.jpg" class="mb-3 rounded rounded-4 risol-image" alt="Risol" data-aos="fade-in">  
+            </div>
+            <button class="btn btn-warning w-100 rounded rounded-pill" data-bs-toggle="modal" data-bs-target="#modalRisol" >Paket Risol</button>
+          </div>
+        </div>
+      </div>
+    
+      <!-- Modal -->
+      <div class="modal fade" id="modalDonut" tabindex="-1" aria-labelledby="modalDonutLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="modalDonutLabel">Pilih Rasa dan Jenis Donat</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <h6 id="selectedPackage" class="mb-3"></h6>
+    
+              <!-- Pilihan Jenis Donat -->
+              <h6 class="mb-3">Pilih Jenis Donat</h6>
+              <div class="d-flex gap-3 mb-4">
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="donutType" id="bomboloni" value="Bomboloni">
+                  <label class="form-check-label" for="bomboloni">Bomboloni</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="donutType" id="topping" value="Donat Topping Atas">
+                  <label class="form-check-label" for="topping">Donat Topping Atas</label>
+                </div>
+              </div>
+    
+              <!-- Pilihan Rasa -->
+              <h6>Pilih Rasa:</h6>
+              <div id="flavor-container" class="mt-3"></div>
+              <p id="warning" class="text-danger mt-3" style="display: none;">Jumlah rasa yang dipilih melebihi batas!</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+              <button type="button" class="btn btn-success" onclick="generateWhatsAppTemplate()">Pesan via WhatsApp</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+        <!-- Modal Risol -->
+    <div class="modal fade" id="modalRisol" tabindex="-1" aria-labelledby="modalRisolLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modalRisolLabel">Pilih Jumlah Risol</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="d-flex justify-content-between align-items-center">
+              <h6>Jumlah Risol:</h6>
+              <div class="d-flex align-items-center gap-2">
+                <button class="btn btn-danger btn-sm" onclick="updateRisol(-1)">-</button>
+                <span id="risolCount" class="mx-2">0</span>
+                <button class="btn btn-success btn-sm" onclick="updateRisol(1)">+</button>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+            <button type="button" class="btn btn-success" onclick="generateRisolWhatsApp()">Pesan via WhatsApp</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="aboutUs " style="background-color: #7c2323; color: #fff; padding: 20px 0;">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <h3 class="text-center">About Us</h3>
+            <p class="text-center">Website ini dibuat dalam rangka MarketDay XI RPL A 2025</p>
+            <hr class="bg-white">
+            <p class="text-center mt-2 fw-bold">Dibuat oleh:</p>
+            <ul class="text-center list-unstyled">
+              <li>M Ikhsan Dzul Hannan</li>
+              <li>M Zaky Al-Anshory</li>
+              <li>I'zaz Ramdhany</li>
+              <li>Jauza Akram Wibawa A</li>
+            </ul>
+            <hr class="bg-white px-3">
+          </div>
+          
+          <div class="col-md-6 text-center rounded p-3">
+            <h3 class="text-center">Contact Us</h3>
+            <a href="https://www.instagram.com/marketopia27/" target="_blank" class="text-center text-decoration-none text-white" align = "center">@marketopia27</a>
+          </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- JS -->
+    <script src="/assets/JS/script.js"></script>
+    <!-- aos -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+      </script>
+</body>
+
+</html>
